@@ -2,7 +2,7 @@
   "name": "cvt-test",
   "version": "1.0.0",
   "description": "cvt test task",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "jest"
   },
@@ -22,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/lightmonk1911/cvt-test/issues"
   },
-  "homepage": "https://github.com/lightmonk1911/cvt-test#readme"
+  "homepage": "https://github.com/lightmonk1911/cvt-test#readme",
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.0",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  }
 }
