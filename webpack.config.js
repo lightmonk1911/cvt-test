@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
       template: './public/index.html',
       title: 'title from config',
     }),
+    new CleanWebpackPlugin(['dist']),
   ],
   output: {
     filename: 'main.js',
