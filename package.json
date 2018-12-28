@@ -1,0 +1,26 @@
+{
+  "name": "cvt-test",
+  "version": "1.0.0",
+  "description": "cvt test task",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightmonk1911/cvt-test.git"
+  },
+  "keywords": [
+    "base",
+    "html",
+    "css",
+    "js",
+    "task"
+  ],
+  "author": "Igor Babenkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lightmonk1911/cvt-test/issues"
+  },
+  "homepage": "https://github.com/lightmonk1911/cvt-test#readme"
+}
