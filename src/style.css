@@ -1,10 +1,6 @@
 body {
   background-color: #E3E3E3;
 }
-
-.red {
-  color: red;
-}
-.blue {
-  color: blue;
-}
+.editable:hover:before {  
+  content: '\270E';  
+}  
