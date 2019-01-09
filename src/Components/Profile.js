@@ -4,6 +4,8 @@ import EditableCity from './city/EditableCity';
 import EditableMarried from './married/EditableMarried';
 import Cat from '../images/cat.png';
 import EditableTel from './tel/EditableTel';
+import EditableEmail from './email/EditableEmail';
+import EditableInterests from './interests/EditableInterests';
 
 class Profile extends Component {
   state = {
@@ -33,11 +35,13 @@ class Profile extends Component {
       <div className="row">
         <div className="col-4 avatar">
           <img src={Cat} alt="Cat" />
-          <button
-            type="button"
-          >
-            Добавить в друзья
-          </button>
+          <div>
+            <button
+              type="button"
+            >
+              Добавить в друзья
+            </button>
+          </div>
         </div>
         <div className="col-8 user-data">
           <EditableName isEditing={editingField === 'name'} value={name} onChange={this.onChange} onEdit={this.onEdit} />
@@ -51,27 +55,11 @@ class Profile extends Component {
             <div className="col-6">
               <EditableMarried isEditing={editingField === 'married'} value={married} onChange={this.onChange} onEdit={this.onEdit} />
               <EditableTel isEditing={editingField === 'tel'} value={tel} onChange={this.onChange} onEdit={this.onEdit} />
-              <p className="editable">vitalya@gora.ru</p>
+              <EditableEmail isEditing={editingField === 'email'} value={email} onChange={this.onChange} onEdit={this.onEdit} />
             </div>
           </div>
           <p><b>Интересы</b></p>
-          <div id="interests">
-            <button
-              type="button"
-            >
-              Музыка
-            </button>
-            <button
-              type="button"
-            >
-              Компьютеры
-            </button>
-            <button
-              type="button"
-            >
-              Радио
-            </button>
-          </div>
+          <EditableInterests interests={interests} onDelete={this.onDeleteInterest} onAdd={this.onAddInterest} />
         </div>
       </div>
     );
