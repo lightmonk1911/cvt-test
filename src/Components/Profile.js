@@ -50,9 +50,12 @@ class Profile extends Component {
     }
   }
 
+  onAddInterest = () => this.setState({ editingField: 'interest' });
+
   render() {
-    console.log(this.state);
-    const { name, city, married, tel, email, interests, editingField } = this.state;
+    const {
+      name, city, married, tel, email, interests, editingField,
+    } = this.state;
     return (
       <div className="row">
         <div className="col-4 avatar">
@@ -66,8 +69,18 @@ class Profile extends Component {
           </div>
         </div>
         <div className="col-8 user-data">
-          <EditableName isEditing={editingField === 'name'} value={name} onChange={this.onChange} onEdit={this.onEdit} />
-          <EditableCity isEditing={editingField === 'city'} value={city} onChange={this.onChange} onEdit={this.onEdit} />
+          <EditableName
+            isEditing={editingField === 'name'}
+            value={name}
+            onChange={this.onChange}
+            onEdit={this.onEdit}
+          />
+          <EditableCity
+            isEditing={editingField === 'city'}
+            value={city}
+            onChange={this.onChange}
+            onEdit={this.onEdit}
+          />
           <div className="row">
             <div className="col-6">
               <p><b>Семейное положение</b></p>
@@ -75,13 +88,33 @@ class Profile extends Component {
               <p><b>E-mail</b></p>
             </div>
             <div className="col-6">
-              <EditableMarried isEditing={editingField === 'married'} value={married} onChange={this.onChange} onEdit={this.onEdit} />
-              <EditableTel isEditing={editingField === 'tel'} value={tel} onChange={this.onChange} onEdit={this.onEdit} />
-              <EditableEmail isEditing={editingField === 'email'} value={email} onChange={this.onChange} onEdit={this.onEdit} />
+              <EditableMarried
+                isEditing={editingField === 'married'}
+                value={married}
+                onChange={this.onChange}
+                onEdit={this.onEdit}
+              />
+              <EditableTel
+                isEditing={editingField === 'tel'}
+                value={tel}
+                onChange={this.onChange}
+                onEdit={this.onEdit}
+              />
+              <EditableEmail
+                isEditing={editingField === 'email'}
+                value={email}
+                onChange={this.onChange}
+                onEdit={this.onEdit}
+              />
             </div>
           </div>
           <p><b>Интересы</b></p>
-          <EditableInterests interests={interests} onChange={this.onChangeInterests} />
+          <EditableInterests
+            interests={interests}
+            onChange={this.onChangeInterests}
+            onAddInterest={this.onAddInterest}
+            isEditing={editingField === 'interest'}
+          />
         </div>
       </div>
     );
