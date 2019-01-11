@@ -7,6 +7,19 @@ import EditableTel from './tel/EditableTel';
 import EditableEmail from './email/EditableEmail';
 import EditableInterests from './interests/EditableInterests';
 
+const getInterestsFromLocalStorage = (defaultInterests) => {
+  const JSONinterests = localStorage.getItem('interests');
+  if (!JSONinterests) return defaultInterests;
+  try {
+    JSON.parse(JSONinterests);
+  } catch (error) {
+    if (error) return defaultInterests;
+  }
+  const interests = JSON.parse(JSONinterests);
+  return interests instanceof Array ? interests : defaultInterests;
+};
+
+
 class Profile extends Component {
   state = {
     name: localStorage.getItem('name') || 'Виталя Гора',
@@ -14,7 +27,7 @@ class Profile extends Component {
     married: localStorage.getItem('married') || 'Холост',
     tel: localStorage.getItem('tel') || '+7 (440) 554-32-12',
     email: localStorage.getItem('email') || 'vitalya@gora.ru',
-    interests: localStorage.getItem('interests') || JSON.stringify(['Музыка', 'Компьютеры', 'Радио']),
+    interests: getInterestsFromLocalStorage(['Музыка', 'Компьютеры', 'Радио']),
     editingField: '',
   }
 
@@ -29,7 +42,16 @@ class Profile extends Component {
     }
   }
 
+  onChangeInterests = (value) => {
+    const JSONInterests = JSON.stringify(value);
+    localStorage.setItem('interests', JSONInterests);
+    if (localStorage.getItem('interests') === JSONInterests) {
+      this.setState({ interests: value, editingField: '' });
+    }
+  }
+
   render() {
+    console.log(this.state);
     const { name, city, married, tel, email, interests, editingField } = this.state;
     return (
       <div className="row">
@@ -59,7 +81,7 @@ class Profile extends Component {
             </div>
           </div>
           <p><b>Интересы</b></p>
-          <EditableInterests interests={interests} onDelete={this.onDeleteInterest} onAdd={this.onAddInterest} />
+          <EditableInterests interests={interests} onChange={this.onChangeInterests} />
         </div>
       </div>
     );
