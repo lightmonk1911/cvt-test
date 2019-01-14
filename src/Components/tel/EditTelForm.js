@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import isNumber from 'is-number';
 import format from './format';
 
 class EditTelForm extends Component {
@@ -22,9 +23,9 @@ class EditTelForm extends Component {
   }
 
   onKeyDown = ({ keyCode }) => {
-    const { value } = this.state;
+    const { value: stateValue } = this.state;
     const { onSave } = this.props;
-    if (keyCode === 13) onSave('tel', value);
+    if (keyCode === 13) onSave('tel', stateValue);
     if (keyCode === 27) onSave('tel', this.initValue);
   }
 
@@ -34,7 +35,7 @@ class EditTelForm extends Component {
     return (
       <p>
         <input
-          placeholder="+7-999-123-45-67"
+          placeholder="+7-(900)-123-45-67"
           ref={this.telInput}
           type="tel"
           value={value}
