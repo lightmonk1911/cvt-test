@@ -9,6 +9,9 @@ module.exports = {
     main: './src/index.js',
   },
   devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
