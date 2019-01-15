@@ -17,9 +17,9 @@ const NavItem = ({
 
 NavItem.propTypes = {
   text: PropTypes.string.isRequired,
-  tabName: PropTypes.string.tabName.isRequired,
+  tabName: PropTypes.string.isRequired,
   changeTab: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.string.isRequired,
 };
 
 export default NavItem;

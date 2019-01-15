@@ -25,7 +25,7 @@ const Navbar = ({ active, changeTab }) => (
 
 Navbar.propTypes = {
   changeTab: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.string.isRequired,
 };
 
 export default Navbar;
