@@ -17,7 +17,7 @@ class EditableInterests extends Component {
       onChange(oldInterests);
       return;
     }
-    const newInterests = oldInterests.concat(interestName);
+    const newInterests = [interestName].concat(oldInterests);
     onChange(newInterests);
   }
 
