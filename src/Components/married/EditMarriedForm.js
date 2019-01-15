@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class EditMarriedForm extends Component {
+  static defaultProps = {
+    value: false,
+  }
+
+  static propTypes = {
+    value: PropTypes.bool,
+    onSave: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.selectMarried = React.createRef();
     this.initValue = props.value;
     this.state = {
-      value: props.value || '',
+      value: props.value,
     };
   }
 
@@ -16,7 +26,7 @@ class EditMarriedForm extends Component {
 
   onSave = ({ target: { value } }) => {
     const { onSave } = this.props;
-    onSave('married', value);
+    onSave('married', value.toString());
   }
 
   onChange = ({ target: { value } }) => {
@@ -32,7 +42,6 @@ class EditMarriedForm extends Component {
 
   render() {
     const { value } = this.state;
-    const { onSave } = this.props;
     return (
       <select
         size={2}
@@ -40,6 +49,7 @@ class EditMarriedForm extends Component {
         value={value}
         onChange={this.onChange}
         onClick={this.onSave}
+        onTouchEnd={this.onSave}
         onBlur={this.onSave}
         onKeyDown={this.onKeyDown}
       >

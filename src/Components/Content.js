@@ -7,8 +7,6 @@ const tabs = {
   friends: <Friends />,
 };
 
-const Content = ({ active }) => {
-  return tabs[active];
-};
+const Content = ({ active }) => tabs[active];
 
 export default Content;

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class NewInterestField extends Component {
+  static propTypes = {
+    onSave: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.textInput = React.createRef();

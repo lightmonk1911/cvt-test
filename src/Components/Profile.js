@@ -24,8 +24,8 @@ class Profile extends Component {
   state = {
     name: localStorage.getItem('name') || 'Виталя Гора',
     city: localStorage.getItem('city') || 'Нижние Шахты',
-    married: localStorage.getItem('married') || 'Холост',
-    tel: localStorage.getItem('tel') || '+7 (440) 554-32-12',
+    married: localStorage.getItem('married'),
+    tel: localStorage.getItem('tel') || '',
     email: localStorage.getItem('email') || 'vitalya@gora.ru',
     interests: getInterestsFromLocalStorage(['Музыка', 'Компьютеры', 'Радио']),
     editingField: '',
@@ -90,7 +90,7 @@ class Profile extends Component {
             <div className="col-6">
               <EditableMarried
                 isEditing={editingField === 'married'}
-                value={married}
+                value={married === 'true'}
                 onChange={this.onChange}
                 onEdit={this.onEdit}
               />

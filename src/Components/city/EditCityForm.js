@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class EditCityForm extends Component {
+  static defaultProps = {
+    value: '',
+  }
+
+  static propTypes = {
+    value: PropTypes.string,
+    onSave: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.textInput = React.createRef();
     this.initValue = props.value;
     this.state = {
-      value: props.value || '',
+      value: props.value,
     };
   }
+
 
   componentDidMount() {
     this.textInput.current.focus();
@@ -31,9 +42,11 @@ class EditCityForm extends Component {
     const { onSave } = this.props;
     return (
       <small>
+        {'г. '}
         <input
           ref={this.textInput}
           type="text"
+          placeholder="Екатеринбург"
           value={value}
           onChange={this.onChange}
           onBlur={() => onSave('city', value)}

@@ -1,21 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import NavItem from './NavItem';
 
 const navItemsList = [
   { text: 'Профиль', tabName: 'profile' },
   { text: 'Друзья пользователя', tabName: 'friends' },
 ];
-
-const NavItem = ({ text, tabName, changeTab, active }) => (
-  <li className="nav-item">
-    <button
-      type="button"
-      onClick={() => changeTab(tabName)}
-      className={`mx-1 nav-link ${active === tabName ? 'active' : ''}`}
-    >
-      {text}
-    </button>
-  </li>
-);
 
 const Navbar = ({ active, changeTab }) => (
   <nav>
@@ -32,5 +22,10 @@ const Navbar = ({ active, changeTab }) => (
     </ul>
   </nav>
 );
+
+Navbar.propTypes = {
+  changeTab: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+};
 
 export default Navbar;

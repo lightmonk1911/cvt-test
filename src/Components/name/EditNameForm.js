@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class EditNameForm extends Component {
+  static defaultProps = {
+    value: '',
+  }
+
+  static propTypes = {
+    value: PropTypes.string,
+    onSave: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.textInput = React.createRef();
     this.initValue = props.value;
     this.state = {
-      value: props.value || '',
+      value: props.value,
     };
   }
 

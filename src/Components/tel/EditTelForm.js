@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getStringOfDigits, formatFromString, getNewSelectionStart } from './Format';
 
 class EditTelForm extends Component {
+  static defaultProps = {
+    value: '',
+  }
+
+  static propTypes = {
+    value: PropTypes.string,
+    onSave: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.telInput = React.createRef();
     this.initValue = props.value;
     this.state = {
-      value: props.value || '',
+      value: props.value,
       keyDownSelectionStart: 0,
       newSelectionStart: 0,
     };
