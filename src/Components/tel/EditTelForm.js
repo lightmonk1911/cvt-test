@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import isNumber from 'is-number';
-import { getStringOfDigits, formatFromString } from './Format';
+import { getStringOfDigits, formatFromString, getNewSelectionStart } from './Format';
 
 class EditTelForm extends Component {
   constructor(props) {
@@ -21,25 +20,15 @@ class EditTelForm extends Component {
 
   onChange = ({ target: { value, selectionStart } }) => {
     const formattedTel = formatFromString(value);
-    this.setState((oldState) => {
-      const shift = selectionStart - oldState.keyDownSelectionStart;
-      let newSelectionStart;
-      if (shift > 0) {
-        newSelectionStart = Array.from(formattedTel)
-          .findIndex((_sign, index) => isNumber(formattedTel[index - 1])
-            && (index >= selectionStart));
-      } else if (shift === 0) {
-        newSelectionStart = selectionStart;
-      } else {
-        const indexFromRight = Array.from(formattedTel)
-          .reverse()
-          .findIndex((_sign, index, array) => isNumber(array[index])
-            && (index >= array.length - selectionStart));
-        const index = formattedTel.length - indexFromRight;
-        newSelectionStart = index;
-      }
-      return { value: getStringOfDigits(formattedTel), newSelectionStart };
-    }, () => {
+    this.setState(oldState => ({
+      value: getStringOfDigits(formattedTel),
+      newSelectionStart: getNewSelectionStart(
+        oldState.keyDownSelectionStart,
+        selectionStart,
+        formattedTel,
+      ),
+    }),
+    () => {
       const { newSelectionStart } = this.state;
       this.telInput.current.setSelectionRange(newSelectionStart, newSelectionStart);
     });

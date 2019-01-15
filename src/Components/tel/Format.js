@@ -26,3 +26,23 @@ export const formatFromString = (telString = '', mask) => {
 };
 
 export const getStringOfDigits = string => getArrayOfDigitsFromString(string).slice(0, 11).join('');
+
+export const getNewSelectionStart = (oldSelectionStart, currentSelectionStart, formattedTel) => {
+  const shift = currentSelectionStart - oldSelectionStart;
+  let newSelectionStart;
+  if (shift > 0) {
+    newSelectionStart = Array.from(formattedTel)
+      .findIndex((_sign, index) => isNumber(formattedTel[index - 1])
+        && (index >= currentSelectionStart));
+  } else if (shift === 0) {
+    newSelectionStart = currentSelectionStart;
+  } else {
+    const indexFromRight = Array.from(formattedTel)
+      .reverse()
+      .findIndex((_sign, index, array) => isNumber(array[index])
+        && (index >= array.length - currentSelectionStart));
+    const index = formattedTel.length - indexFromRight;
+    newSelectionStart = index;
+  }
+  return newSelectionStart;
+};
