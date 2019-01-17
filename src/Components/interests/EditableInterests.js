@@ -32,6 +32,7 @@ class EditableInterests extends Component {
     const { interests, onAddInterest, isEditing } = this.props;
     return (
       <div id="interests">
+        <NewInterest onAddInterest={onAddInterest} onSave={this.onAdd} isEditing={isEditing} />
         {interests.map((interestName, index) => (
           <InterestButton
             key={`${interestName}`}
@@ -39,7 +40,6 @@ class EditableInterests extends Component {
             onClick={() => this.onDelete(index)}
           />
         ))}
-        <NewInterest onAddInterest={onAddInterest} onSave={this.onAdd} isEditing={isEditing} />
       </div>
     );
   }

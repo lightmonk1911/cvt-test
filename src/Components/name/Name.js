@@ -4,9 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Name = ({ onEdit, value }) => (
-  <h1 className="editable" onClick={() => onEdit('name')}>
+  <h2 className="editable" onClick={() => onEdit('name')}>
     {value}
-  </h1>
+  </h2>
 );
 
 Name.propTypes = {

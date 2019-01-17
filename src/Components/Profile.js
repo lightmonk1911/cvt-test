@@ -57,49 +57,47 @@ class Profile extends Component {
       name, city, married, tel, email, interests, editingField,
     } = this.state;
     return (
-      <div className="row">
-        <div className="col-4 avatar">
-          <img src={Cat} alt="Cat" />
-          <div>
-            <button
-              type="button"
-            >
-              Добавить в друзья
-            </button>
-          </div>
+      <section className="main">
+        <div className="avatar-section">
+          <img id="avatar" src={Cat} alt="Cat" />
+          <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
         </div>
-        <div className="col-8 user-data">
-          <EditableName
-            isEditing={editingField === 'name'}
-            value={name}
-            onChange={this.onChange}
-            onEdit={this.onEdit}
-          />
-          <EditableCity
-            isEditing={editingField === 'city'}
-            value={city}
-            onChange={this.onChange}
-            onEdit={this.onEdit}
-          />
-          <div className="row">
-            <div className="col-6">
-              <p><b>Семейное положение</b></p>
-              <p><b>Телефон</b></p>
-              <p><b>E-mail</b></p>
-            </div>
-            <div className="col-6">
+        <div className="user-data">
+          <header>
+            <EditableName
+              isEditing={editingField === 'name'}
+              value={name}
+              onChange={this.onChange}
+              onEdit={this.onEdit}
+            />
+            <EditableCity
+              isEditing={editingField === 'city'}
+              value={city}
+              onChange={this.onChange}
+              onEdit={this.onEdit}
+            />
+          </header>
+          <section className="lined-user-data-section">
+            <div className="inline-user-data">
+              <span className="user-data-line-name"><b>Семейное положение </b></span>
               <EditableMarried
                 isEditing={editingField === 'married'}
                 value={married === 'true'}
                 onChange={this.onChange}
                 onEdit={this.onEdit}
               />
+            </div>
+            <div className="inline-user-data">
+              <span className="user-data-line-name"><b>Телефон </b></span>
               <EditableTel
                 isEditing={editingField === 'tel'}
                 value={tel}
                 onChange={this.onChange}
                 onEdit={this.onEdit}
               />
+            </div>
+            <div className="inline-user-data">
+              <span className="user-data-line-name"><b>E-mail </b></span>
               <EditableEmail
                 isEditing={editingField === 'email'}
                 value={email}
@@ -107,16 +105,18 @@ class Profile extends Component {
                 onEdit={this.onEdit}
               />
             </div>
-          </div>
-          <p><b>Интересы</b></p>
-          <EditableInterests
-            interests={interests}
-            onChange={this.onChangeInterests}
-            onAddInterest={this.onAddInterest}
-            isEditing={editingField === 'interest'}
-          />
+          </section>
+          <section className="interests-section">
+            <b>Интересы</b>
+            <EditableInterests
+              interests={interests}
+              onChange={this.onChangeInterests}
+              onAddInterest={this.onAddInterest}
+              isEditing={editingField === 'interest'}
+            />
+          </section>
         </div>
-      </div>
+      </section>
     );
   }
 }

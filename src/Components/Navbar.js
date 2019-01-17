@@ -9,7 +9,7 @@ const navItemsList = [
 
 const Navbar = ({ active, changeTab }) => (
   <nav>
-    <ul className="nav nav-tabs">
+    <ul className="nav">
       {navItemsList.map(({ text, tabName }) => (
         <NavItem
           key={tabName}

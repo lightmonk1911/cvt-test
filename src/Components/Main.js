@@ -7,6 +7,6 @@ const tabs = {
   friends: <Friends />,
 };
 
-const Content = ({ active }) => tabs[active];
+const Main = ({ active }) => tabs[active];
 
-export default Content;
+export default Main;

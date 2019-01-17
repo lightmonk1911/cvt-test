@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const City = ({ onEdit, value }) => (
-  <small className="editable" onClick={() => onEdit('city')}>
+  <small id="city" className="editable" onClick={() => onEdit('city')}>
     {`г. ${value}`}
   </small>
 );

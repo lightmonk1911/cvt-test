@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Components/Navbar';
-import Content from './Components/Content';
+import Main from './Components/Main';
 
 class App extends Component {
   state = {
@@ -17,8 +17,10 @@ class App extends Component {
     const { active } = this.state;
     return (
       <div className="container">
-        <Navbar active={active} changeTab={this.changeTab} />
-        <Content active={active} />
+        <header>
+          <Navbar active={active} changeTab={this.changeTab} />
+        </header>
+        <Main active={active} />
       </div>
     );
   }

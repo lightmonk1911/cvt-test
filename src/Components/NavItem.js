@@ -8,7 +8,7 @@ const NavItem = ({
     <button
       type="button"
       onClick={() => changeTab(tabName)}
-      className={`mx-1 nav-link ${active === tabName ? 'active' : ''}`}
+      className={`nav-link ${active === tabName ? 'active' : ''}`}
     >
       {text}
     </button>
