@@ -8,7 +8,7 @@ const NewInterest = ({
 }) => (
   isEditing
     ? <NewInterestField onSave={onSave} />
-    : <InterestButton onClick={onAddInterest} name="+" />
+    : <InterestButton onClick={onAddInterest} title="Добавить новый интерес" name="+" />
 );
 
 NewInterest.propTypes = {
