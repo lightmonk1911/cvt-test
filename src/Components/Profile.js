@@ -57,7 +57,7 @@ class Profile extends Component {
       name, city, married, tel, email, interests, editingField,
     } = this.state;
     return (
-      <section className="main">
+      <section className="profile">
         <div className="avatar-section">
           <img id="avatar" src={Cat} alt="Cat" />
           <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
