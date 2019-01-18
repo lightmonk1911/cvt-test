@@ -1,34 +1,30 @@
 import React from 'react';
-import generatePersonName from '../lib/generatePersonName';
-import generateRandomCity from '../lib/generateRandomCity';
 import FriendCard from './FriendCard';
 
-const generateFriends = (count) => {
-  const friends = [];
-  for (let i = 0; i < count; i += 1) {
-    const person = {
-      name: generatePersonName(),
-      online: Math.random() > 0.5,
-      city: generateRandomCity(),
-    };
-    friends.push(person);
-  }
-  console.log('friends', friends);
-  return friends;
-};
-
-const friendsList = generateFriends(15);
+const friendsList = [
+  { name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true },
+  { name: 'Находка Капитал', city: 'Усть-Бельск', online: true },
+  { name: 'Яндекс Петренко', city: 'Пермь', online: true },
+  { name: 'Успех Возможностей', city: 'Радонеж', online: true },
+  { name: 'Инна Нашлась', city: 'Омск', online: true },
+  { name: 'Алла Подольская', city: 'Петропавловск-Камчатский', online: true },
+];
 
 const Friends = () => (
-  <section className="main">
-    <div className="friends">
-      {friendsList.map((friend) => {
-        return (
-          <FriendCard {...friend} />
-        );
-      })}
-    </div>
-  </section>
+  <div className="content-wrap">
+    <section className="friends-tab">
+      <div className="left">
+        {friendsList.map((friend, index) => !(index % 2) && (
+          <FriendCard {...friend} index={index} key={friend.name} />
+        ))}
+      </div>
+      <div className="right">
+        {friendsList.map((friend, index) => !!(index % 2) && (
+          <FriendCard {...friend} index={index} key={friend.name} />
+        ))}
+      </div>
+    </section>
+  </div>
 );
 
 export default Friends;
