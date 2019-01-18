@@ -4,7 +4,7 @@ import Main from './Components/Main';
 
 class App extends Component {
   state = {
-    active: 'profile',
+    active: 'friends',
   }
 
   changeTab = (tabName) => {
