@@ -8,14 +8,14 @@ const FriendCard = ({
 }) => {
   const pathToAvatar = require(`../images/avatars/${index + 1}.jpg`);
   return (
-    <div className="friend-card">
+    <li className="friend-card">
       <img src={pathToAvatar} alt="ava" className="small-avatar" />
       <div className="friend-data">
-        <h3 className="friend-name">{name}</h3>
+        <h3><button className="link-styled friend-name" type="button">{name}</button></h3>
         <p className="friend-city">{`г. ${city}`}</p>
         <small className="friend-online-status">{online ? 'Online' : null}</small>
       </div>
-    </div>
+    </li>
   );
 };
 

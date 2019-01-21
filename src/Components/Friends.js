@@ -11,18 +11,13 @@ const friendsList = [
 ];
 
 const Friends = () => (
-  <div className="content-wrap">
+  <div className="main content-wrap">
     <section className="friends-tab">
-      <div className="left">
-        {friendsList.map((friend, index) => !(index % 2) && (
+      <ul className="friends-list">
+        {friendsList.map((friend, index) => (
           <FriendCard {...friend} index={index} key={friend.name} />
         ))}
-      </div>
-      <div className="right">
-        {friendsList.map((friend, index) => !!(index % 2) && (
-          <FriendCard {...friend} index={index} key={friend.name} />
-        ))}
-      </div>
+      </ul>
     </section>
   </div>
 );
