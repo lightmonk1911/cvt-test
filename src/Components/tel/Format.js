@@ -8,7 +8,7 @@ const trimPartiallyFilledMask = (partiallyFilledMask) => {
   return trimmedMask;
 };
 
-const defaultMask = '+_-(___)-___-__-__';
+const defaultMask = '+_ (___) ___-__-__';
 
 const getArrayOfDigitsFromString = string => Array.from(string).filter(sign => isNumber(sign));
 
