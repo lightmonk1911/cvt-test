@@ -19,6 +19,7 @@ const getInterestsFromLocalStorage = (defaultInterests) => {
   return interests instanceof Array ? interests : defaultInterests;
 };
 
+const extraEditableFieldsEnabled = false;
 
 class Profile extends Component {
   state = {
@@ -57,7 +58,7 @@ class Profile extends Component {
       name, city, married, tel, email, interests, editingField,
     } = this.state;
     return (
-      <section className="profile">
+      <section className="main profile">
         <div className="avatar-section">
           <img id="avatar" src={Cat} alt="Cat" />
           <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
@@ -75,6 +76,7 @@ class Profile extends Component {
               value={city}
               onChange={this.onChange}
               onEdit={this.onEdit}
+              extraEditableFieldsEnabled={extraEditableFieldsEnabled}
             />
           </header>
           <section className="lined-user-data-section">
@@ -85,6 +87,7 @@ class Profile extends Component {
                 value={married === 'true'}
                 onChange={this.onChange}
                 onEdit={this.onEdit}
+                extraEditableFieldsEnabled={extraEditableFieldsEnabled}
               />
             </div>
             <div className="inline-user-data">
