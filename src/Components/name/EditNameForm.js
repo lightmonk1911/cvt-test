@@ -40,7 +40,7 @@ class EditNameForm extends Component {
     const { value } = this.state;
     const { onSave } = this.props;
     return (
-      <h1>
+      <h2>
         <input
           ref={this.textInput}
           type="text"
@@ -49,7 +49,7 @@ class EditNameForm extends Component {
           onBlur={() => onSave('name', value)}
           onKeyDown={this.onKeyDown}
         />
-      </h1>
+      </h2>
     );
   }
 }

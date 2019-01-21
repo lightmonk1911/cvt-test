@@ -46,7 +46,7 @@ class NewInterestField extends Component {
         />
         <button
           type="submit"
-          id="save-interest-btn"
+          className="save-btn"
         >
           {value ? 'Добавить интерес' : 'Отменить'}
         </button>
