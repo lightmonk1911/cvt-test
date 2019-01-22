@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import EditableName from './name/EditableName';
-import EditableCity from './city/EditableCity';
-import EditableMarried from './married/EditableMarried';
 import Cat from '../images/cat.png';
 import EditableTel from './tel/EditableTel';
 import EditableEmail from './email/EditableEmail';
@@ -19,13 +17,9 @@ const getInterestsFromLocalStorage = (defaultInterests) => {
   return interests instanceof Array ? interests : defaultInterests;
 };
 
-const extraEditableFieldsEnabled = false;
-
 class Profile extends Component {
   state = {
     name: localStorage.getItem('name') || 'Виталя Гора',
-    city: localStorage.getItem('city') || 'Нижние Шахты',
-    married: localStorage.getItem('married'),
     tel: localStorage.getItem('tel') || '',
     email: localStorage.getItem('email') || 'vitalya@gora.ru',
     interests: getInterestsFromLocalStorage(['Музыка', 'Компьютеры', 'Радио']),
@@ -55,7 +49,7 @@ class Profile extends Component {
 
   render() {
     const {
-      name, city, married, tel, email, interests, editingField,
+      name, tel, email, interests, editingField,
     } = this.state;
     return (
       <section className="main profile">
@@ -71,24 +65,14 @@ class Profile extends Component {
               onChange={this.onChange}
               onEdit={this.onEdit}
             />
-            <EditableCity
-              isEditing={editingField === 'city'}
-              value={city}
-              onChange={this.onChange}
-              onEdit={this.onEdit}
-              extraEditableFieldsEnabled={extraEditableFieldsEnabled}
-            />
+            <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
           <section className="lined-user-data-section">
             <div className="inline-user-data">
-              <span className="user-data-line-name"><b>Семейное положение </b></span>
-              <EditableMarried
-                isEditing={editingField === 'married'}
-                value={married === 'true'}
-                onChange={this.onChange}
-                onEdit={this.onEdit}
-                extraEditableFieldsEnabled={extraEditableFieldsEnabled}
-              />
+              <span className="user-data-line-name">
+                <b>Семейное положение </b>
+              </span>
+              <span className="user-data-line-value">холост</span>
             </div>
             <div className="inline-user-data">
               <span className="user-data-line-name"><b>Телефон </b></span>

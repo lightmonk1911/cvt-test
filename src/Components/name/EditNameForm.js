@@ -29,26 +29,64 @@ class EditNameForm extends Component {
     this.setState({ value });
   }
 
+  save = (value) => {
+    const { onSave } = this.props;
+    if (value !== '' && value !== this.initValue) {
+      onSave('name', value);
+      return;
+    }
+    onSave('name', this.initValue);
+  }
+
+  cancel = () => {
+    this.save(this.initValue);
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  onBlur = (e) => {
+    if (e.relatedTarget && e.relatedTarget.className === 'cancel-btn') return;
+    const { value } = this.state;
+    this.save(value);
+  }
+
   onKeyDown = ({ keyCode }) => {
     const { value } = this.state;
-    const { onSave } = this.props;
-    if (keyCode === 13) onSave('name', value);
-    if (keyCode === 27) onSave('name', this.initValue);
+    if (keyCode === 13) this.save(value);
+    if (keyCode === 27) this.cancel();
   }
 
   render() {
     const { value } = this.state;
-    const { onSave } = this.props;
+    const { save, cancel } = this;
     return (
       <h2>
-        <input
-          ref={this.textInput}
-          type="text"
-          value={value}
-          onChange={this.onChange}
-          onBlur={() => onSave('name', value)}
-          onKeyDown={this.onKeyDown}
-        />
+        <form onSubmit={this.onSubmit}>
+          <input
+            ref={this.textInput}
+            type="text"
+            value={value}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
+            onKeyDown={this.onKeyDown}
+          />
+          <button
+            type="button"
+            className="save-btn"
+            onClick={() => save(value)}
+          >
+            &#10004;
+          </button>
+          <button
+            type="button"
+            className="cancel-btn"
+            onClick={cancel}
+          >
+            &#10006;
+          </button>
+        </form>
       </h2>
     );
   }
