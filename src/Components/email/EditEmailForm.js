@@ -13,44 +13,83 @@ class EditEmailForm extends Component {
 
   constructor(props) {
     super(props);
-    this.emailInput = React.createRef();
+    this.textInput = React.createRef();
     this.initValue = props.value;
     this.state = {
-      value: props.value || '',
+      value: props.value,
     };
   }
 
   componentDidMount() {
-    this.emailInput.current.focus();
-    this.emailInput.current.select();
+    this.textInput.current.focus();
+    this.textInput.current.select();
   }
 
   onChange = ({ target: { value } }) => {
     this.setState({ value });
   }
 
+  save = (value) => {
+    const { onSave } = this.props;
+    if (value !== '' && value !== this.initValue) {
+      onSave('email', value);
+      return;
+    }
+    onSave('email', this.initValue);
+  }
+
+  cancel = () => {
+    this.save(this.initValue);
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  onBlur = (e) => {
+    if (e.relatedTarget && e.relatedTarget.className === 'cancel-btn') return;
+    if (e.relatedTarget && e.relatedTarget.className === 'save-btn') return;
+    if (e.relatedTarget && e.relatedTarget.tagName === 'INPUT') return;
+    const { value } = this.state;
+    this.save(value);
+  }
+
   onKeyDown = ({ keyCode }) => {
     const { value } = this.state;
-    const { onSave } = this.props;
-    if (keyCode === 13) onSave('email', value);
-    if (keyCode === 27) onSave('email', this.initValue);
+    if (keyCode === 13) this.save(value);
+    if (keyCode === 27) this.cancel();
   }
 
   render() {
     const { value } = this.state;
-    const { onSave } = this.props;
+    const { save, cancel } = this;
     return (
-      <p>
+      <form onSubmit={this.onSubmit}>
         <input
-          placeholder="address@gmail.com"
-          ref={this.emailInput}
+          ref={this.textInput}
           type="email"
           value={value}
           onChange={this.onChange}
-          onBlur={() => onSave('email', value)}
+          onBlur={this.onBlur}
           onKeyDown={this.onKeyDown}
         />
-      </p>
+        <button
+          type="button"
+          className="save-btn"
+          onBlur={this.onBlur}
+          onClick={() => save(value)}
+        >
+          &#10004;
+        </button>
+        <button
+          type="button"
+          className="cancel-btn"
+          onBlur={this.onBlur}
+          onClick={cancel}
+        >
+          &#10006;
+        </button>
+      </form>
     );
   }
 }

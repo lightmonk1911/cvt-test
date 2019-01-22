@@ -3,8 +3,6 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Profile from '../Profile';
 import EditableName from '../name/EditableName';
-import EditableCity from '../city/EditableCity';
-import EditableMarried from '../married/EditableMarried';
 import Cat from '../../images/cat.png';
 import EditableTel from '../tel/EditableTel';
 import EditableEmail from '../email/EditableEmail';
@@ -21,16 +19,6 @@ describe('should have init state', () => {
   test('name', () => {
     const wrapper = shallow(<Profile />);
     expect(wrapper.state('name')).toBe('Виталя Гора');
-  });
-
-  test('city', () => {
-    const wrapper = shallow(<Profile />);
-    expect(wrapper.state('city')).toBe('Нижние Шахты');
-  });
-
-  test('married', () => {
-    const wrapper = shallow(<Profile />);
-    expect(wrapper.state('married')).toBe(null);
   });
 
   test('tel', () => {
@@ -68,12 +56,10 @@ describe('static Profile', () => {
   test('header', () => {
     expect(wrapper.find('section.main.profile > div.user-data > header')).toHaveLength(1);
     expect(wrapper.find('header').find(EditableName)).toHaveLength(1);
-    expect(wrapper.find('header').find(EditableCity)).toHaveLength(1);
   });
 
   test('user-data section', () => {
     expect(wrapper.find('section.lined-user-data-section > div.inline-user-data > span.user-data-line-name')).toHaveLength(3);
-    expect(wrapper.find('.inline-user-data').find(EditableMarried)).toHaveLength(1);
     expect(wrapper.find('.inline-user-data').find(EditableTel)).toHaveLength(1);
     expect(wrapper.find('.inline-user-data').find(EditableEmail)).toHaveLength(1);
   });
@@ -92,8 +78,10 @@ describe('behavior Profile', () => {
   });
 
   test('on click to name state should change and appear editNameForm', () => {
-    wrapper.find(EditableName).simulate('click');
-    expect(wrapper.state('editingField')).toBe('name');
-    expect(wrapper.find('form')).toHaveLength(1);
+    wrapper.find('EditableName').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.state('editingField')).toBe('name');
+      expect(wrapper.find('form')).toHaveLength(1);
+    }, 10);
   });
 });

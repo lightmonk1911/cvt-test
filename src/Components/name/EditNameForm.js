@@ -48,6 +48,8 @@ class EditNameForm extends Component {
 
   onBlur = (e) => {
     if (e.relatedTarget && e.relatedTarget.className === 'cancel-btn') return;
+    if (e.relatedTarget && e.relatedTarget.className === 'save-btn') return;
+    if (e.relatedTarget && e.relatedTarget.tagName === 'INPUT') return;
     const { value } = this.state;
     this.save(value);
   }
@@ -75,6 +77,7 @@ class EditNameForm extends Component {
           <button
             type="button"
             className="save-btn"
+            onBlur={this.onBlur}
             onClick={() => save(value)}
           >
             &#10004;
@@ -82,6 +85,7 @@ class EditNameForm extends Component {
           <button
             type="button"
             className="cancel-btn"
+            onBlur={this.onBlur}
             onClick={cancel}
           >
             &#10006;
