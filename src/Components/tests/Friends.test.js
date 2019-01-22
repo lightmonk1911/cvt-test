@@ -11,8 +11,12 @@ afterAll(() => { global.console.error.restore(); });
 
 describe('static Friends', () => {
   const friendsList = [
-    { name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true },
-    { name: 'Находка Капитал', city: 'Усть-Бельск', online: true },
+    {
+      name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, avatarNumber: 1,
+    },
+    {
+      name: 'Находка Капитал', city: 'Усть-Бельск', online: true, avatarNumber: 2,
+    },
   ];
   const wrapper = shallow(<Friends friendsList={friendsList} />);
 
