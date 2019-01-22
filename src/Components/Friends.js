@@ -6,8 +6,8 @@ const Friends = ({ friendsList }) => (
   <div className="main content-wrap">
     <section className="friends-tab">
       <ul className="friends-list">
-        {friendsList.map((friend, index) => (
-          <FriendCard {...friend} index={index} key={friend.name} />
+        {friendsList.map(friend => (
+          <FriendCard {...friend} key={friend.name} />
         ))}
       </ul>
     </section>
@@ -19,17 +19,30 @@ Friends.propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
+    avatarNumber: PropTypes.number.isRequired,
   })),
 };
 
 Friends.defaultProps = {
   friendsList: [
-    { name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true },
-    { name: 'Находка Капитал', city: 'Усть-Бельск', online: true },
-    { name: 'Яндекс Петренко', city: 'Пермь', online: true },
-    { name: 'Успех Возможностей', city: 'Радонеж', online: true },
-    { name: 'Инна Нашлась', city: 'Омск', online: true },
-    { name: 'Алла Подольская', city: 'Петропавловск-Камчатский', online: true },
+    {
+      name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, avatarNumber: 1,
+    },
+    {
+      name: 'Находка Капитал', city: 'Усть-Бельск', online: true, avatarNumber: 2,
+    },
+    {
+      name: 'Яндекс Петренко', city: 'Пермь', online: true, avatarNumber: 3,
+    },
+    {
+      name: 'Успех Возможностей', city: 'Радонеж', online: true, avatarNumber: 4,
+    },
+    {
+      name: 'Инна Нашлась', city: 'Омск', online: true, avatarNumber: 5,
+    },
+    {
+      name: 'Алла Подольская', city: 'Петропавловск-Камчатский', online: true, avatarNumber: 6,
+    },
   ],
 };
 
