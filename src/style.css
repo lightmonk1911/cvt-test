@@ -23,13 +23,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+form {
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr;
+  grid-column-gap: 2px;
+  padding: 0px 3px;
+}
+
 input {
   border-radius: 5px;
   border: 1px solid #E3E3E3;
-  padding: 1px 6px;
-  margin-right: 5px;
-  width: auto;
+  padding: 1px 3px;
   font: inherit;
+  width: 100%;
 }
 
 ::-webkit-scrollbar-button {
@@ -58,7 +64,7 @@ input {
   width: 5.5px;
 }
 
-input, button {
+input {
   outline: none;
 }
 
@@ -267,6 +273,9 @@ h2 {
 #interests {
   margin-top: 5px;
 }
+#interests form {
+  margin-bottom: 5px;
+}
 
 #interests>button {
   background-color: #FFFFFF;
@@ -284,17 +293,16 @@ h2 {
   color: black;
 }
 
-.save-btn {
-  font-size: 12px;
-  border-radius: 5px;
-  border: none;
+.save-btn, .cancel-btn {
+  font-size: inherit;
+  border-radius: 3px;
+  width: 100%;
+  border: 1px solid #096996;
   background-color: #0084B0;
   color: white;
-  margin: 0;
-  padding: 2px 6px;
 }
 
-.save-btn:hover {
+.save-btn:hover, .cancel-btn:hover {
   cursor: pointer;
   background-color: #015c7a;
 }
@@ -316,5 +324,27 @@ h2 {
   }
   .user-data {
     padding: 1rem;
+  }
+  .friends-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .friend-card {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "small-avatar friend-data";
+    grid-gap: 0px 10px;
+  }
+  .container {
+    max-width: 488px;
+    background-color: #E3E3E3;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "profile" "footer";
+    padding-top: 0;
+  }
+  .friends-tab {
+    height: 100%;
   }
 }
