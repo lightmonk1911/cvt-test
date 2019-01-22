@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import Profile from '../Profile';
 import EditableName from '../name/EditableName';
@@ -70,7 +70,7 @@ describe('static Profile', () => {
 });
 
 describe('behavior Profile', () => {
-  const wrapper = shallow(<Profile />);
+  const wrapper = mount(<Profile />);
   test('name should change in state and localStorage', () => {
     wrapper.find(EditableName).prop('onChange')('name', 'Арнольд Шварцнегер');
     expect(wrapper.state('name')).toBe('Арнольд Шварцнегер');
@@ -78,10 +78,11 @@ describe('behavior Profile', () => {
   });
 
   test('on click to name state should change and appear editNameForm', () => {
-    wrapper.find('EditableName').simulate('click');
-    setTimeout(() => {
-      expect(wrapper.state('editingField')).toBe('name');
-      expect(wrapper.find('form')).toHaveLength(1);
-    }, 10);
+    wrapper.find('h2').simulate('click');
+    expect(wrapper.state('editingField')).toBe('name');
+    expect(wrapper.find('form')).toHaveLength(1);
+    wrapper.find('img').simulate('click');
+    expect(wrapper.state('editingField')).toBe('');
+    expect(wrapper.find('form')).toHaveLength(0);
   });
 });
