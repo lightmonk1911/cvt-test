@@ -4,6 +4,7 @@ import { formatFromString } from './Format';
 
 const Tel = ({ onEdit, value }) => (
   <button
+    id="tel"
     type="button"
     className="editable link-styled"
     onClick={() => onEdit('tel')}
