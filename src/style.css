@@ -9,11 +9,12 @@
 }
 
 .link-styled {
-  background: none!important;
-  color: inherit;
+  text-decoration: underline;
+  color: #0073AC;
+  background: none;
   border: none;
   text-align: start;
-  padding: 0!important;
+  padding: 0;
   font: inherit;
   cursor: pointer;
 }
@@ -74,7 +75,7 @@ input {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "header" "profile" "footer";
+  grid-template-areas: "header" "main";
   padding-top: 46px;
 }
 
@@ -114,6 +115,7 @@ header nav li {
 }
 
 .main {
+  grid-area: main;
   font-size: 12px;
   font-weight: 100;
   letter-spacing: 0.1px;
@@ -127,7 +129,6 @@ header nav li {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
-  grid-area: profile;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "avatar user-data";
@@ -238,17 +239,18 @@ h2 {
   grid-template-areas: "user-data-header" "lined-user-data-section" "interests-section";
 }
 
+.bad {
+  color: #912626;
+}
+
 .user-data>header {
   grid-area: user-data-header;
 }
 
 #user-name {
   display: block;
-}
-
-#email {
-  text-decoration: underline;
-  color: #0073AC;
+  text-decoration: none;
+  color: inherit;
 }
 
 .lined-user-data-section {
@@ -313,22 +315,30 @@ h2 {
 
 @media (max-width: 500px) {
   .container {
-    grid-template-columns: 1fr;
-    grid-template-areas: "header" "profile"
+    display: block;
+    height: 100vh;
+    background-color: #E3E3E3;
+    margin: 0 auto;
+    padding-top: 0;
   }
-  .profile {
-    grid-template-columns: 1fr;
-    grid-template-areas: "avatar" "user-data";
+
+  .main {
+    display: block;
+    height: calc(100vh - 32px);
+    padding-bottom: 0;
   }
+
   #avatar {
     border-radius: 4px;
     object-fit: cover;
     width: 100%;
-    height: 200px;
+    height: 50vh;
   }
+
   .user-data {
     padding: 1rem;
   }
+
   .friends-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -339,15 +349,7 @@ h2 {
     grid-template-areas: "small-avatar friend-data";
     grid-gap: 0px 10px;
   }
-  .container {
-    max-width: 488px;
-    background-color: #E3E3E3;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "header" "profile" "footer";
-    padding-top: 0;
-  }
+  
   .friends-tab {
     height: 100%;
   }
