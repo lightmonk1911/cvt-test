@@ -27,6 +27,8 @@ export const formatFromString = (telString = '', mask) => {
 
 export const getStringOfDigits = string => getArrayOfDigitsFromString(string).slice(0, 11).join('');
 
+export const validate = string => getStringOfDigits(string).length === 11;
+
 export const getNewSelectionStart = (oldSelectionStart, currentSelectionStart, formattedTel) => {
   const shift = currentSelectionStart - oldSelectionStart;
   let newSelectionStart;

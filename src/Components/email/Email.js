@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { validate } from 'isemail';
 
 const Email = ({ onEdit, value }) => (
   <button
     id="email"
     type="button"
-    className="editable link-styled"
+    className={`editable link-styled ${validate(value) ? '' : 'bad'}`}
     onClick={() => onEdit('email')}
   >
     {value}
