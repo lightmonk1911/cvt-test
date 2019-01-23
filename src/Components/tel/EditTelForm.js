@@ -81,7 +81,7 @@ class EditTelForm extends Component {
     const { save, cancel } = this;
     const formattedTel = formatFromString(value);
     return (
-      <form onSubmit={this.onSubmit}>
+      <form id="edit-tel-form" onSubmit={this.onSubmit}>
         <input
           placeholder="+7 (900) 123-45-67"
           ref={this.telInput}

@@ -65,7 +65,7 @@ class EditNameForm extends Component {
     const { save, cancel } = this;
     return (
       <h2>
-        <form onSubmit={this.onSubmit}>
+        <form id="edit-name-form" onSubmit={this.onSubmit}>
           <input
             ref={this.textInput}
             type="text"
