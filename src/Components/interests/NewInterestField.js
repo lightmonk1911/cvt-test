@@ -56,11 +56,10 @@ class NewInterestField extends Component {
 
   render() {
     const { value } = this.state;
-    const { onSave } = this.props;
     return (
       <form
         id="new-interest-form"
-        onSubmit={() => onSave(value)}
+        onSubmit={this.onSubmit}
       >
         <input
           ref={this.textInput}
