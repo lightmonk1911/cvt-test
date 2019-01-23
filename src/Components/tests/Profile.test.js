@@ -54,18 +54,18 @@ describe('static Profile', () => {
   });
 
   test('header', () => {
-    expect(wrapper.find('section.main.profile > div.user-data > header')).toHaveLength(1);
+    expect(wrapper.find('div.main.profile > div.user-data > header')).toHaveLength(1);
     expect(wrapper.find('header').find(EditableName)).toHaveLength(1);
   });
 
   test('user-data section', () => {
-    expect(wrapper.find('section.lined-user-data-section > div.inline-user-data > span.user-data-line-name')).toHaveLength(3);
+    expect(wrapper.find('div.lined-user-data-section > div.inline-user-data > span.user-data-line-name')).toHaveLength(3);
     expect(wrapper.find('.inline-user-data').find(EditableTel)).toHaveLength(1);
     expect(wrapper.find('.inline-user-data').find(EditableEmail)).toHaveLength(1);
   });
 
   test('interests section', () => {
-    expect(wrapper.find('section.main.profile > div.user-data > section.interests-section').find(EditableInterests)).toHaveLength(1);
+    expect(wrapper.find('div.main.profile > div.user-data > div.interests-section').find(EditableInterests)).toHaveLength(1);
   });
 });
 

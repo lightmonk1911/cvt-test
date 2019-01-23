@@ -52,7 +52,7 @@ class Profile extends Component {
       name, tel, email, interests, editingField,
     } = this.state;
     return (
-      <section className="main profile">
+      <div className="main profile">
         <div className="avatar-section">
           <img id="avatar" src={Cat} alt="Cat" />
           <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
@@ -67,7 +67,7 @@ class Profile extends Component {
             />
             <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
-          <section className="lined-user-data-section">
+          <div className="lined-user-data-section">
             <div className="inline-user-data">
               <span className="user-data-line-name">
                 <b>Семейное положение </b>
@@ -92,8 +92,8 @@ class Profile extends Component {
                 onEdit={this.onEdit}
               />
             </div>
-          </section>
-          <section className="interests-section">
+          </div>
+          <div className="interests-section">
             <b>Интересы</b>
             <EditableInterests
               interests={interests}
@@ -101,9 +101,9 @@ class Profile extends Component {
               onAddInterest={this.onAddInterest}
               isEditing={editingField === 'interest'}
             />
-          </section>
+          </div>
         </div>
-      </section>
+      </div>
     );
   }
 }
