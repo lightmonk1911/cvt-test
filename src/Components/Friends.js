@@ -4,13 +4,13 @@ import FriendCard from './FriendCard';
 
 const Friends = ({ friendsList }) => (
   <div className="main content-wrap">
-    <section className="friends-tab">
+    <div className="friends-tab">
       <ul className="friends-list">
         {friendsList.map(friend => (
           <FriendCard {...friend} key={friend.name} />
         ))}
       </ul>
-    </section>
+    </div>
   </div>
 );
 
