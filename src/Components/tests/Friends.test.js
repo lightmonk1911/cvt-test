@@ -21,7 +21,7 @@ describe('static Friends', () => {
   const wrapper = shallow(<Friends friendsList={friendsList} />);
 
   test('structure', () => {
-    expect(wrapper.find('div.main.content-wrap > section.friends-tab > ul.friends-list')).toHaveLength(1);
+    expect(wrapper.find('div.main.content-wrap > div.friends-tab > ul.friends-list')).toHaveLength(1);
     expect(wrapper.find(FriendCard)).toHaveLength(2);
   });
 
