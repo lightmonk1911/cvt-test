@@ -6,7 +6,7 @@ const Tel = ({ onEdit, value }) => (
   <button
     id="tel"
     type="button"
-    className={`editable link-styled ${validate(value) ? '' : 'bad'}`}
+    className={`editable link-styled${validate(value) ? '' : ' bad'}`}
     onClick={() => onEdit('tel')}
   >
     {formatFromString(value)}

@@ -6,7 +6,7 @@ const Email = ({ onEdit, value }) => (
   <button
     id="email"
     type="button"
-    className={`editable link-styled ${validate(value) ? '' : 'bad'}`}
+    className={`editable link-styled${validate(value) ? '' : ' bad'}`}
     onClick={() => onEdit('email')}
   >
     {value}
