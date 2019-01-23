@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FriendCard from './FriendCard';
+import pathsToAvatars from '../lib/pathsToAvatars';
 
 const Friends = ({ friendsList }) => (
   <div className="main content-wrap">
@@ -19,29 +20,29 @@ Friends.propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
-    avatarNumber: PropTypes.number.isRequired,
+    pathToAvatar: PropTypes.string.isRequired,
   })),
 };
 
 Friends.defaultProps = {
   friendsList: [
     {
-      name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, avatarNumber: 1,
+      name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, pathToAvatar: pathsToAvatars[0],
     },
     {
-      name: 'Находка Капитал', city: 'Усть-Бельск', online: true, avatarNumber: 2,
+      name: 'Находка Капитал', city: 'Усть-Бельск', online: true, pathToAvatar: pathsToAvatars[1],
     },
     {
-      name: 'Яндекс Петренко', city: 'Пермь', online: true, avatarNumber: 3,
+      name: 'Яндекс Петренко', city: 'Пермь', online: true, pathToAvatar: pathsToAvatars[2],
     },
     {
-      name: 'Успех Возможностей', city: 'Радонеж', online: true, avatarNumber: 4,
+      name: 'Успех Возможностей', city: 'Радонеж', online: true, pathToAvatar: pathsToAvatars[3],
     },
     {
-      name: 'Инна Нашлась', city: 'Омск', online: true, avatarNumber: 5,
+      name: 'Инна Нашлась', city: 'Омск', online: true, pathToAvatar: pathsToAvatars[4],
     },
     {
-      name: 'Алла Подольская', city: 'Петропавловск-Камчатский', online: true, avatarNumber: 6,
+      name: 'Алла Подольская', city: 'Петропавловск-Камчатский', online: true, pathToAvatar: pathsToAvatars[5],
     },
   ],
 };
