@@ -23,7 +23,7 @@ describe('should have init state', () => {
 
   test('tel', () => {
     const wrapper = shallow(<Profile />);
-    expect(wrapper.state('tel')).toBe('79635411220');
+    expect(wrapper.state('tel')).toBe('74405543212');
   });
 
   test('email', () => {
@@ -33,7 +33,7 @@ describe('should have init state', () => {
 
   test('interests', () => {
     const wrapper = shallow(<Profile />);
-    expect(wrapper.state('interests')).toEqual(['Музыка', 'Компьютеры', 'Радио']);
+    expect(wrapper.state('interests')).toEqual(['музыка', 'компьютеры', 'радио']);
   });
 
   test('editingField', () => {
@@ -429,7 +429,7 @@ describe('behavior Profile', () => {
           <input
             placeholder="+7 (900) 123-45-67"
             type="tel"
-            value="+7 (963) 541-12-20"
+            value="+7 (440) 554-32-12"
           />
           <button
             type="button"
@@ -467,7 +467,7 @@ describe('behavior Profile', () => {
             type="button"
             className="editable link-styled"
           >
-            +7 (963) 541-12-20
+            +7 (440) 554-32-12
           </button>,
         )).toBe(true);
       });
@@ -628,7 +628,7 @@ describe('behavior Profile', () => {
 
     describe('user changes new interest input value', () => {
       const interest = 'Swimming';
-      const newInterests = [interest, 'Компьютеры'];
+      const newInterests = [interest, 'компьютеры'];
       beforeEach(() => {
         wrapper.find('input').simulate('change', {
           target: { value: interest },
@@ -679,9 +679,9 @@ describe('behavior Profile', () => {
             <button
               className="interest-button"
               type="button"
-              title={'Удалить интерес "Компьютеры"'}
+              title={'Удалить интерес "компьютеры"'}
             >
-              Компьютеры
+              компьютеры
             </button>,
           )).toBe(true);
         });
