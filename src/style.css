@@ -325,6 +325,7 @@ h2 {
   .main {
     display: block;
     height: calc(100vh - 32px);
+    overflow-y: auto;
     padding-bottom: 0;
   }
 
