@@ -273,11 +273,15 @@ h2 {
 #interests {
   margin-top: 5px;
 }
-#interests form {
+
+#new-interest-form {
+  display: grid;
+  grid-template-columns: 6fr 3fr;
   margin-bottom: 5px;
 }
 
 #interests>button {
+  margin-right: 3px;
   background-color: #FFFFFF;
   padding: 4px 6px;
   color: #0075AA;
