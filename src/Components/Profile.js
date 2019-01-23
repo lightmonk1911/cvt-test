@@ -20,9 +20,9 @@ const getInterestsFromLocalStorage = (defaultInterests) => {
 class Profile extends Component {
   state = {
     name: localStorage.getItem('name') || 'Виталя Гора',
-    tel: localStorage.getItem('tel') || '79635411220',
+    tel: localStorage.getItem('tel') || '74405543212',
     email: localStorage.getItem('email') || 'vitalya@gora.ru',
-    interests: getInterestsFromLocalStorage(['Музыка', 'Компьютеры', 'Радио']),
+    interests: getInterestsFromLocalStorage(['музыка', 'компьютеры', 'радио']),
     editingField: '',
   }
 
