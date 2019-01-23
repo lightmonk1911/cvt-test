@@ -64,7 +64,7 @@ class EditEmailForm extends Component {
     const { value } = this.state;
     const { save, cancel } = this;
     return (
-      <form onSubmit={this.onSubmit}>
+      <form id="edit-email-form" onSubmit={this.onSubmit}>
         <input
           ref={this.textInput}
           type="email"
