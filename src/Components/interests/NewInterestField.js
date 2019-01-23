@@ -23,9 +23,35 @@ class NewInterestField extends Component {
     this.setState({ value });
   }
 
-  onKeyDown = ({ keyCode }) => {
+  save = (value) => {
     const { onSave } = this.props;
-    if (keyCode === 27) onSave('');
+    if (value !== '' && value !== this.initValue) {
+      onSave(value);
+      return;
+    }
+    onSave(this.initValue);
+  }
+
+  cancel = () => {
+    this.save(this.initValue);
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  onBlur = (e) => {
+    if (e.relatedTarget && e.relatedTarget.className === 'cancel-btn') return;
+    if (e.relatedTarget && e.relatedTarget.className === 'save-btn') return;
+    if (e.relatedTarget && e.relatedTarget.tagName === 'INPUT') return;
+    const { value } = this.state;
+    this.save(value);
+  }
+
+  onKeyDown = ({ keyCode }) => {
+    const { value } = this.state;
+    if (keyCode === 13) this.save(value);
+    if (keyCode === 27) this.cancel();
   }
 
   render() {
@@ -33,6 +59,7 @@ class NewInterestField extends Component {
     const { onSave } = this.props;
     return (
       <form
+        id="new-interest-form"
         onSubmit={() => onSave(value)}
       >
         <input
@@ -41,12 +68,13 @@ class NewInterestField extends Component {
           type="text"
           value={value}
           onChange={this.onChange}
-          onBlur={() => onSave(value)}
+          onBlur={this.onBlur}
           onKeyDown={this.onKeyDown}
         />
         <button
           type="submit"
           className="save-btn"
+          onBlur={this.onBlur}
         >
           {value ? 'Добавить интерес' : 'Отменить'}
         </button>
