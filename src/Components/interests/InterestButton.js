@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const InterestButton = ({ name, onClick, title }) => (
   <button
+    className="interest-button"
     type="button"
     onClick={() => onClick()}
     title={title || `Удалить интерес "${name}"`}
