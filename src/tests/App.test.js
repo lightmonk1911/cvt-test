@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
-import Main from './Components/Main';
-import Navbar from './Components/Navbar';
+import App from '../App';
+import Main from '../Components/Main';
+import Navbar from '../Components/Navbar';
 
 const Test = () => <div className="container">Test</div>;
 

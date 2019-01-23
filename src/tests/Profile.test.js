@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
-import Profile from '../Profile';
-import EditableName from '../name/EditableName';
-import Cat from '../../images/cat.png';
-import EditableTel from '../tel/EditableTel';
-import EditableEmail from '../email/EditableEmail';
-import EditableInterests from '../interests/EditableInterests';
+import Profile from '../Components/Profile';
+import EditableName from '../Components/name/EditableName';
+import Cat from '../images/cat.png';
+import EditableTel from '../Components/tel/EditableTel';
+import EditableEmail from '../Components/email/EditableEmail';
+import EditableInterests from '../Components/interests/EditableInterests';
 
 const fakeLocalStorage = {};
 

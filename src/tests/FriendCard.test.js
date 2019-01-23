@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import FriendCard from '../FriendCard';
+import FriendCard from '../Components/FriendCard';
+import pathsToAvatars from '../lib/pathsToAvatars';
 
 beforeAll(() => {
   sinon.stub(console, 'error').callsFake((warning) => { throw new Error(warning); });
@@ -10,7 +11,7 @@ afterAll(() => { global.console.error.restore(); });
 
 describe('static FriendCard', () => {
   const friend = {
-    name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, avatarNumber: 1,
+    name: 'Лев Бронштейн', city: 'Ханты-Мансийск', online: true, pathToAvatar: pathsToAvatars[0],
   };
   const wrapper = shallow(<FriendCard {...friend} />);
   test('structure', () => {

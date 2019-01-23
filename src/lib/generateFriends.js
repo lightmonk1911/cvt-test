@@ -4,9 +4,10 @@ import getRandomArrayElement from './getRandomArrayElement';
 import pathsToAvatars from './pathsToAvatars';
 
 const generateFriends = (count) => {
+  const finalCount = count > 36 ? 36 : count;
   const friends = [];
   let paths = pathsToAvatars.slice();
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0; i < finalCount; i += 1) {
     const [path, indexOfUsedPath] = getRandomArrayElement(paths, 'withIndex');
     paths = paths.filter((element, index) => index !== indexOfUsedPath);
     const person = {

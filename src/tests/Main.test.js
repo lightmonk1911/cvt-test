@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Main from '../Main';
-import Profile from '../Profile';
-import Friends from '../Friends';
+import Main from '../Components/Main';
+import Profile from '../Components/Profile';
+import Friends from '../Components/Friends';
 
 beforeAll(() => {
   sinon.stub(console, 'error').callsFake((warning) => { throw new Error(warning); });

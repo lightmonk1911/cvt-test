@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Navbar from '../Navbar';
-import NavItem from '../NavItem';
+import Navbar from '../Components/Navbar';
+import NavItem from '../Components/NavItem';
 
 beforeAll(() => {
   sinon.stub(console, 'error').callsFake((warning) => { throw new Error(warning); });
