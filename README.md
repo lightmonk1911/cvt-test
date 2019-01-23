@@ -2,6 +2,7 @@
 ## Install
 
 ```bash
+$ git clone https://github.com/lightmonk1911/cvt-test.git
 $ cd cvt-test
 $ npm install
 ```
