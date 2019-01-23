@@ -163,7 +163,7 @@ header nav li {
 }
 
 .friend-card {
-  padding-bottom: 31px;
+  margin-bottom: 31px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "small-avatar friend-data";
