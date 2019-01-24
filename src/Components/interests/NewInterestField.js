@@ -74,6 +74,7 @@ class NewInterestField extends Component {
           type="submit"
           className="save-btn"
           onBlur={this.onBlur}
+          onClick={() => save(value)}
         >
           {value ? 'Добавить интерес' : 'Отменить'}
         </button>
