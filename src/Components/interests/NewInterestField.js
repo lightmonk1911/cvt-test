@@ -56,6 +56,7 @@ class NewInterestField extends Component {
 
   render() {
     const { value } = this.state;
+    const { save } = this;
     return (
       <form
         id="new-interest-form"

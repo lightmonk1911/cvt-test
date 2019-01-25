@@ -639,6 +639,54 @@ describe('behavior Profile', () => {
         expect(wrapper.find('input').prop('value')).toBe(interest);
       });
 
+      describe('user click save-btn', () => {
+        beforeEach(() => {
+          wrapper.find('.save-btn').simulate('click');
+        });
+
+        afterEach(() => {
+          wrapper.find('.interest-button').at(1).simulate('click');
+        });
+
+        test('should update state editing field', () => {
+          expect(wrapper.state('editingField')).toBe('');
+        });
+
+        test('should update state interests', () => {
+          expect(wrapper.state('interests')).toEqual(newInterests);
+        });
+
+        test('should update localStorage interests', () => {
+          expect(localStorage.getItem('interests')).toBe(JSON.stringify(newInterests));
+        });
+
+        test('new interest form should disappear', () => {
+          expect(wrapper.find('form')).toHaveLength(0);
+        });
+
+        test('interest btn should appear', () => {
+          expect(wrapper.containsMatchingElement(
+            <button
+              className="interest-button"
+              type="button"
+              title={`Удалить интерес "${interest}"`}
+            >
+              {interest}
+            </button>,
+          )).toBe(true);
+
+          expect(wrapper.containsMatchingElement(
+            <button
+              className="interest-button"
+              type="button"
+              title={'Удалить интерес "компьютеры"'}
+            >
+              компьютеры
+            </button>,
+          )).toBe(true);
+        });
+      });
+
       describe('user blur to out of form', () => {
         beforeEach(() => {
           wrapper.find('input').simulate('blur');
@@ -688,7 +736,7 @@ describe('behavior Profile', () => {
       });
 
       describe('user blur to form element', () => {
-        describe('save-btn class', () => {
+        describe('blur to save-btn class', () => {
           beforeEach(() => {
             wrapper.find('input').simulate('blur', {
               relatedTarget: { className: 'save-btn' },
@@ -708,7 +756,7 @@ describe('behavior Profile', () => {
           });
         });
 
-        describe('cancel-btn class', () => {
+        describe('blur to INPUT', () => {
           beforeEach(() => {
             wrapper.find('input').simulate('blur', {
               relatedTarget: { tagName: 'INPUT' },
