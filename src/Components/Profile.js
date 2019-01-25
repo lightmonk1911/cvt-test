@@ -45,7 +45,7 @@ class Profile extends Component {
     }
   }
 
-  onAddInterest = () => this.setState({ editingField: 'interest' });
+  onAddInterest = () => this.onEdit('interests');
 
   render() {
     const {
@@ -99,7 +99,7 @@ class Profile extends Component {
               interests={interests}
               onChange={this.onChangeInterests}
               onAddInterest={this.onAddInterest}
-              isEditing={editingField === 'interest'}
+              isEditing={editingField === 'interests'}
             />
           </div>
         </div>
