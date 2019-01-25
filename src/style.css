@@ -240,7 +240,7 @@ h2 {
 }
 
 .bad {
-  color: #912626;
+  color: #912626 !important;
 }
 
 .user-data>header {
