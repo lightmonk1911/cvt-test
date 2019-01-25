@@ -64,6 +64,10 @@ describe('behavior Profile', () => {
       localStorage.setItem('interests', JSON.stringify(initList));
       wrapper = mount(<Profile />);
     });
+
+    afterEach(() => {
+      wrapper.unmount();
+    });
     describe('user clicks on existing interests', () => {
       test(`should present interest ${initList[0]}`, () => {
         expect(wrapper.find('.interest-button').findWhere(node => node.text() === initList[0])).toHaveLength(1);
@@ -198,6 +202,14 @@ describe('behavior Profile', () => {
         describe('user blur to out of form', () => {
           beforeEach(() => {
             wrapper.find('input').simulate('blur');
+          });
+
+          shouldSave(value);
+        });
+
+        describe('user blur to out of form', () => {
+          beforeEach(() => {
+            wrapper.find('.save-btn').simulate('click');
           });
 
           shouldSave(value);
