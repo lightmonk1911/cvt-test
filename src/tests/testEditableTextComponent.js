@@ -60,6 +60,14 @@ const testEditable = ({
       shouldSave(initValue);
     });
 
+    describe('user clicks on save-btn', () => {
+      beforeEach(() => {
+        wrapper.find('.save-btn').simulate('click');
+      });
+
+      shouldSave(initValue);
+    });
+
     describe('user changes value', () => {
       const value = newValue;
       beforeEach(() => {
@@ -75,6 +83,14 @@ const testEditable = ({
       describe('user blur to out of form', () => {
         beforeEach(() => {
           wrapper.find('input').simulate('blur');
+        });
+
+        shouldSave(value);
+      });
+
+      describe('user clicks on save-btn', () => {
+        beforeEach(() => {
+          wrapper.find('.save-btn').simulate('click');
         });
 
         shouldSave(value);
