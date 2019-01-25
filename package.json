@@ -4,7 +4,7 @@
   "description": "cvt test task",
   "private": true,
   "scripts": {
-    "test": "jest",
+    "test": "jest --watchAll",
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
