@@ -207,7 +207,7 @@ describe('behavior Profile', () => {
           shouldSave(value);
         });
 
-        describe('user blur to out of form', () => {
+        describe('user clicks on save-btn', () => {
           beforeEach(() => {
             wrapper.find('.save-btn').simulate('click');
           });
