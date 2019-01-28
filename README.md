@@ -1,4 +1,6 @@
 # cvt-test
+
+<a href="https://codeclimate.com/github/lightmonk1911/cvt-test/maintainability"><img src="https://api.codeclimate.com/v1/badges/6ed9e3a6939a5dcc0418/maintainability" /></a>
 ## Install
 
 ```bash
