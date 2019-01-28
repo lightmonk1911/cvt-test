@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import EditableName from './name/EditableName';
 import Cat from '../images/cat.png';
@@ -27,31 +28,30 @@ class Profile extends Component {
     editingField: '',
   }
 
+
   onEdit = (fieldName) => {
     this.setState({ editingField: fieldName });
   }
 
   onChange = (fieldName, value) => {
-    localStorage.setItem(fieldName, value);
-    if (localStorage.getItem(fieldName) === value) {
+    const JSONValue = typeof value === 'string' ? value : JSON.stringify(value);
+    localStorage.setItem(fieldName, JSONValue);
+    if (localStorage.getItem(fieldName) === JSONValue) {
       this.setState({ [fieldName]: value, editingField: '' });
     }
   }
 
-  onChangeInterests = (value) => {
-    const JSONInterests = JSON.stringify(value);
-    localStorage.setItem('interests', JSONInterests);
-    if (localStorage.getItem('interests') === JSONInterests) {
-      this.setState({ interests: value, editingField: '' });
-    }
-  }
-
-  onAddInterest = () => this.onEdit('interests');
-
   render() {
-    const {
-      name, tel, email, interests, editingField,
-    } = this.state;
+    const generatePropsForEditable = (fieldName) => {
+      const { editingField, [fieldName]: value } = this.state;
+      const { onChange, onEdit } = this;
+      return {
+        isEditing: editingField === fieldName,
+        value,
+        onChange,
+        onEdit,
+      };
+    };
     return (
       <div className="main profile">
         <div className="avatar-section">
@@ -60,47 +60,17 @@ class Profile extends Component {
         </div>
         <div className="user-data">
           <header>
-            <EditableName
-              isEditing={editingField === 'name'}
-              value={name}
-              onChange={this.onChange}
-              onEdit={this.onEdit}
-            />
+            <EditableName {...generatePropsForEditable('name')} />
             <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
           <div className="lined-user-data-section">
             <InlineUserData name="Семейное положение" value={<span className="user-data-line-value">холост</span>} />
-            <InlineUserData
-              name="Телефон"
-              value={(
-                <EditableTel
-                  isEditing={editingField === 'tel'}
-                  value={tel}
-                  onChange={this.onChange}
-                  onEdit={this.onEdit}
-                />
-              )}
-            />
-            <InlineUserData
-              name="E-mail"
-              value={(
-                <EditableEmail
-                  isEditing={editingField === 'email'}
-                  value={email}
-                  onChange={this.onChange}
-                  onEdit={this.onEdit}
-                />
-              )}
-            />
+            <InlineUserData name="Телефон" value={<EditableTel {...generatePropsForEditable('tel')} />} />
+            <InlineUserData name="E-mail" value={<EditableEmail {...generatePropsForEditable('email')} />} />
           </div>
           <div className="interests-section">
             <b>Интересы</b>
-            <EditableInterests
-              interests={interests}
-              onChange={this.onChangeInterests}
-              onAddInterest={this.onAddInterest}
-              isEditing={editingField === 'interests'}
-            />
+            <EditableInterests {...generatePropsForEditable('interests')} />
           </div>
         </div>
       </div>

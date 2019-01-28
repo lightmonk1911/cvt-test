@@ -6,34 +6,34 @@ import NewInterest from './NewInterest';
 class EditableInterests extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    interests: PropTypes.arrayOf(PropTypes.string).isRequired,
+    value: PropTypes.arrayOf(PropTypes.string).isRequired,
     isEditing: PropTypes.bool.isRequired,
-    onAddInterest: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
   }
 
   onAdd = (interestName) => {
-    const { onChange, interests: oldInterests } = this.props;
+    const { onChange, value: oldInterests } = this.props;
     if (!interestName) {
-      onChange(oldInterests);
+      onChange('interests', oldInterests);
       return;
     }
     const newInterests = [interestName].concat(oldInterests);
-    onChange(newInterests);
+    onChange('interests', newInterests);
   }
 
   onDelete = (indexOfDeletingInterest) => {
-    const { onChange, interests: oldInterests } = this.props;
+    const { onChange, value: oldInterests } = this.props;
     const newInterests = oldInterests
       .filter((interestName, index) => index !== indexOfDeletingInterest);
-    onChange(newInterests);
+    onChange('interests', newInterests);
   }
 
   render() {
-    const { interests, onAddInterest, isEditing } = this.props;
+    const { value, onEdit, isEditing } = this.props;
     return (
       <div id="interests">
-        <NewInterest onAddInterest={onAddInterest} onSave={this.onAdd} isEditing={isEditing} />
-        {interests.map((interestName, index) => (
+        <NewInterest onAddInterest={() => onEdit('interests')} onSave={this.onAdd} isEditing={isEditing} />
+        {value.map((interestName, index) => (
           <InterestButton
             key={`${interestName}`}
             name={interestName}
