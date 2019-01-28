@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import EditableName from './name/EditableName';
-import Cat from '../images/cat.png';
 import EditableTel from './tel/EditableTel';
 import EditableEmail from './email/EditableEmail';
 import EditableInterests from './interests/EditableInterests';
 import InlineUserData from './InlineUserData';
+import AvatarSection from './AvatarSection';
 
 const getInterestsFromLocalStorage = (defaultInterests) => {
   const JSONinterests = localStorage.getItem('interests');
@@ -54,10 +54,7 @@ class Profile extends Component {
     };
     return (
       <div className="main profile">
-        <div className="avatar-section">
-          <img id="avatar" src={Cat} alt="Cat" />
-          <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
-        </div>
+        <AvatarSection />
         <div className="user-data">
           <header>
             <EditableName {...generatePropsForEditable('name')} />

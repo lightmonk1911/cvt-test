@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Profile from '../Components/Profile';
 import EditableName from '../Components/name/EditableName';
-import Cat from '../images/cat.png';
 import InlineUserData from '../Components/InlineUserData';
 import EditableInterests from '../Components/interests/EditableInterests';
+import AvatarSection from '../Components/AvatarSection';
 
 const fakeLocalStorage = {};
 
@@ -44,12 +44,7 @@ describe('should have init state', () => {
 describe('static Profile', () => {
   const wrapper = shallow(<Profile />);
   test('avatar section', () => {
-    expect(wrapper.contains(
-      <div className="avatar-section">
-        <img id="avatar" src={Cat} alt="Cat" />
-        <button type="button" id="add-to-freinds-btn">Добавить в друзья</button>
-      </div>,
-    )).toBe(true);
+    expect(wrapper.find(AvatarSection)).toHaveLength(1);
   });
 
   test('header', () => {
