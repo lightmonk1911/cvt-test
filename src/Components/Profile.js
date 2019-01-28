@@ -4,6 +4,7 @@ import Editable from './Editable';
 import EditableInterests from './interests/EditableInterests';
 import InlineUserData from './InlineUserData';
 import AvatarSection from './AvatarSection';
+import propsForEditableGenerator from './propsForEditableGenerator';
 
 const getInterestsFromLocalStorage = () => {
   const JSONinterests = localStorage.getItem('interests');
@@ -47,17 +48,7 @@ class Profile extends Component {
   }
 
   render() {
-    const generatePropsForEditable = (fieldName) => {
-      const { editingField, [fieldName]: value } = this.state;
-      const { onChange, onEdit } = this;
-      return {
-        isEditing: editingField === fieldName,
-        fieldName,
-        value,
-        onChange,
-        onEdit,
-      };
-    };
+    const generatePropsForEditable = propsForEditableGenerator.bind(this);
     return (
       <div className="main profile">
         <AvatarSection />
