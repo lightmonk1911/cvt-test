@@ -5,7 +5,8 @@
   "private": true,
   "sideEffect": false,
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watch --noStackTrace",
+    "profile-test": "jest src/tests/Profile.test.js",
     "build": "webpack --mode=production",
     "start": "webpack-dev-server --open"
   },

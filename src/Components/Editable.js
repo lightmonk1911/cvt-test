@@ -1,19 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { validate as validateEmail } from 'isemail';
 import EditForm from './EditForm';
-import Name from './Name';
-import Tel from './Tel';
-import { formatFromString } from './tel/Format';
+import { formatFromString, validate as validateTel } from './tel/Format';
 import onTelInputChange from './tel/onChange';
 import onTelInputKeyDown from './tel/onKeyDown';
-import Email from './Email';
+import EditableStatic from './EditableStatic';
 
 const EditableElements = {
   name: {
-    static: Name, customProps: { fieldName: 'name', id: 'edit-name-form', placeholder: 'Иван Петров' },
+    staticCustomProps: {
+      buttonId: 'user-name',
+      fieldName: 'name',
+    },
+    customProps: {
+      fieldName: 'name',
+      id: 'edit-name-form',
+      placeholder: 'Иван Петров',
+    },
   },
   tel: {
-    static: Tel,
+    staticCustomProps: {
+      buttonId: 'tel',
+      fieldName: 'tel',
+      formatValue: formatFromString,
+      validate: validateTel,
+    },
     customProps: {
       fieldName: 'tel',
       id: 'edit-tel-form',
@@ -24,7 +36,16 @@ const EditableElements = {
     },
   },
   email: {
-    static: Email, customProps: { fieldName: 'email', id: 'edit-email-form', placeholder: 'email@domain.ru' },
+    staticCustomProps: {
+      buttonId: 'email',
+      fieldName: 'email',
+      validate: validateEmail,
+    },
+    customProps: {
+      fieldName: 'email',
+      id: 'edit-email-form',
+      placeholder: 'email@domain.ru',
+    },
   },
 };
 
@@ -32,7 +53,13 @@ const Editable = ({
   isEditing, value, onChange, onEdit, fieldName,
 }) => {
   if (!isEditing) {
-    return React.createElement(EditableElements[fieldName].static, { value, onEdit });
+    return (
+      <EditableStatic
+        {...EditableElements[fieldName].staticCustomProps}
+        onEdit={onEdit}
+        value={value}
+      />
+    );
   }
   return (
     <EditForm

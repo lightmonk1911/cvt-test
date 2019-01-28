@@ -12,6 +12,7 @@ const NewInterest = ({
         onSave={(fieldname, newInterestName) => onSave(newInterestName)}
         placeholder="Sport"
         id="new-interest-form"
+        fieldName="interests"
         isInterests
       />
     )

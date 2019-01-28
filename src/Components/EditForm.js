@@ -99,6 +99,7 @@ class EditForm extends Component {
         {!isInterests
           ? [
             <button
+              key="save-btn"
               type="button"
               className="save-btn"
               onBlur={onBlur}
@@ -107,6 +108,7 @@ class EditForm extends Component {
               &#10004;
             </button>,
             <button
+              key="cancel-btn"
               type="button"
               className="cancel-btn"
               onBlur={onBlur}

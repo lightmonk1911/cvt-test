@@ -19,6 +19,9 @@ const testEditable = ({
       const button = wrapper.find(`${initSelector}`);
       button.simulate('click');
     });
+    afterEach(() => {
+      wrapper.unmount();
+    });
 
     test('should update state editingField', () => {
       expect(wrapper.state('editingField')).toBe(fieldName);
