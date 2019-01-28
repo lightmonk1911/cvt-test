@@ -4,6 +4,7 @@ import Cat from '../images/cat.png';
 import EditableTel from './tel/EditableTel';
 import EditableEmail from './email/EditableEmail';
 import EditableInterests from './interests/EditableInterests';
+import InlineUserData from './InlineUserData';
 
 const getInterestsFromLocalStorage = (defaultInterests) => {
   const JSONinterests = localStorage.getItem('interests');
@@ -68,30 +69,29 @@ class Profile extends Component {
             <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
           <div className="lined-user-data-section">
-            <div className="inline-user-data">
-              <span className="user-data-line-name">
-                <b>Семейное положение </b>
-              </span>
-              <span className="user-data-line-value">холост</span>
-            </div>
-            <div className="inline-user-data">
-              <span className="user-data-line-name"><b>Телефон </b></span>
-              <EditableTel
-                isEditing={editingField === 'tel'}
-                value={tel}
-                onChange={this.onChange}
-                onEdit={this.onEdit}
-              />
-            </div>
-            <div className="inline-user-data">
-              <span className="user-data-line-name"><b>E-mail </b></span>
-              <EditableEmail
-                isEditing={editingField === 'email'}
-                value={email}
-                onChange={this.onChange}
-                onEdit={this.onEdit}
-              />
-            </div>
+            <InlineUserData name="Семейное положение" value={<span className="user-data-line-value">холост</span>} />
+            <InlineUserData
+              name="Телефон"
+              value={(
+                <EditableTel
+                  isEditing={editingField === 'tel'}
+                  value={tel}
+                  onChange={this.onChange}
+                  onEdit={this.onEdit}
+                />
+              )}
+            />
+            <InlineUserData
+              name="E-mail"
+              value={(
+                <EditableEmail
+                  isEditing={editingField === 'email'}
+                  value={email}
+                  onChange={this.onChange}
+                  onEdit={this.onEdit}
+                />
+              )}
+            />
           </div>
           <div className="interests-section">
             <b>Интересы</b>

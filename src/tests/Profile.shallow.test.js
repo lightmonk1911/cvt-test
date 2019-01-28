@@ -4,8 +4,7 @@ import sinon from 'sinon';
 import Profile from '../Components/Profile';
 import EditableName from '../Components/name/EditableName';
 import Cat from '../images/cat.png';
-import EditableTel from '../Components/tel/EditableTel';
-import EditableEmail from '../Components/email/EditableEmail';
+import InlineUserData from '../Components/InlineUserData';
 import EditableInterests from '../Components/interests/EditableInterests';
 
 const fakeLocalStorage = {};
@@ -59,9 +58,7 @@ describe('static Profile', () => {
   });
 
   test('user-data section', () => {
-    expect(wrapper.find('div.lined-user-data-section > div.inline-user-data > span.user-data-line-name')).toHaveLength(3);
-    expect(wrapper.find('.inline-user-data').find(EditableTel)).toHaveLength(1);
-    expect(wrapper.find('.inline-user-data').find(EditableEmail)).toHaveLength(1);
+    expect(wrapper.find('.lined-user-data-section').find(InlineUserData)).toHaveLength(3);
   });
 
   test('interests section', () => {
