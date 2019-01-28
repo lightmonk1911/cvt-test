@@ -13,7 +13,7 @@ const NewInterest = ({
         placeholder="Sport"
         id="new-interest-form"
         fieldName="interests"
-        isInterests
+        buttonPanel={['AddInterestBtn']}
       />
     )
     : <InterestButton onClick={onAddInterest} title="Добавить новый интерес" name="+" />
