@@ -7,24 +7,31 @@ import EditableInterests from './interests/EditableInterests';
 import InlineUserData from './InlineUserData';
 import AvatarSection from './AvatarSection';
 
-const getInterestsFromLocalStorage = (defaultInterests) => {
+const getInterestsFromLocalStorage = () => {
   const JSONinterests = localStorage.getItem('interests');
-  if (!JSONinterests) return defaultInterests;
+  if (!JSONinterests) return null;
   try {
     JSON.parse(JSONinterests);
   } catch (error) {
-    if (error) return defaultInterests;
+    if (error) return null;
   }
   const interests = JSON.parse(JSONinterests);
-  return interests instanceof Array ? interests : defaultInterests;
+  return interests instanceof Array ? interests : null;
+};
+
+const defaultState = {
+  name: 'Виталя Гора',
+  tel: '74405543212',
+  email: 'vitalya@gora.ru',
+  interests: ['музыка', 'компьютеры', 'радио'],
 };
 
 class Profile extends Component {
   state = {
-    name: localStorage.getItem('name') || 'Виталя Гора',
-    tel: localStorage.getItem('tel') || '74405543212',
-    email: localStorage.getItem('email') || 'vitalya@gora.ru',
-    interests: getInterestsFromLocalStorage(['музыка', 'компьютеры', 'радио']),
+    name: localStorage.getItem('name') || defaultState.name,
+    tel: localStorage.getItem('tel') || defaultState.tel,
+    email: localStorage.getItem('email') || defaultState.email,
+    interests: getInterestsFromLocalStorage() || defaultState.interests,
     editingField: '',
   }
 

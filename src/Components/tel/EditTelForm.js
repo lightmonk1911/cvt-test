@@ -71,8 +71,8 @@ class EditTelForm extends Component {
 
   onKeyDown = ({ keyCode, target: { selectionStart } }) => {
     this.setState({ keyDownSelectionStart: selectionStart });
-    const { value: stateValue } = this.state;
-    if (keyCode === 13) this.save(stateValue);
+    const { value } = this.state;
+    if (keyCode === 13) this.save(value);
     if (keyCode === 27) this.cancel();
   }
 
