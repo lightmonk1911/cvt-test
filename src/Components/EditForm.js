@@ -8,6 +8,7 @@ class EditForm extends Component {
     formatValue: value => value,
     onChange: null,
     onKeyDown: null,
+    isInterests: false,
   }
 
   static propTypes = {
@@ -20,6 +21,7 @@ class EditForm extends Component {
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     onKeyDown: PropTypes.func,
+    isInterests: PropTypes.bool,
   }
 
   constructor(props) {
@@ -77,9 +79,11 @@ class EditForm extends Component {
   render() {
     const { value } = this.state;
     const {
-      id, type, placeholder, formatValue,
+      id, type, placeholder, formatValue, isInterests,
     } = this.props;
-    const { save, cancel } = this;
+    const {
+      save, cancel, onBlur, onChange, onKeyDown,
+    } = this;
     const formattedTel = formatValue(value);
     return (
       <form id={id} onSubmit={this.onSubmit}>
@@ -88,26 +92,39 @@ class EditForm extends Component {
           ref={this.input}
           type={type}
           value={formattedTel}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onKeyDown={this.onKeyDown}
+          onChange={onChange}
+          onBlur={onBlur}
+          onKeyDown={onKeyDown}
         />
-        <button
-          type="button"
-          className="save-btn"
-          onBlur={this.onBlur}
-          onClick={() => save(value)}
-        >
-          &#10004;
-        </button>
-        <button
-          type="button"
-          className="cancel-btn"
-          onBlur={this.onBlur}
-          onClick={cancel}
-        >
-          &#10006;
-        </button>
+        {!isInterests
+          ? [
+            <button
+              type="button"
+              className="save-btn"
+              onBlur={onBlur}
+              onClick={() => save(value)}
+            >
+              &#10004;
+            </button>,
+            <button
+              type="button"
+              className="cancel-btn"
+              onBlur={onBlur}
+              onClick={cancel}
+            >
+              &#10006;
+            </button>,
+          ]
+          : (
+            <button
+              type="submit"
+              className="save-btn"
+              onBlur={this.onBlur}
+              onClick={() => save(value)}
+            >
+              {value ? 'Добавить интерес' : 'Отменить'}
+            </button>
+          )}
       </form>
     );
   }

@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InterestButton from './InterestButton';
-import NewInterestField from './NewInterestField';
+import EditForm from '../EditForm';
 
 const NewInterest = ({
   isEditing, onAddInterest, onSave,
 }) => (
   isEditing
-    ? <NewInterestField onSave={onSave} />
+    ? (
+      <EditForm
+        onSave={(fieldname, newInterestName) => onSave(newInterestName)}
+        placeholder="Sport"
+        id="new-interest-form"
+        isInterests
+      />
+    )
     : <InterestButton onClick={onAddInterest} title="Добавить новый интерес" name="+" />
 );
 
