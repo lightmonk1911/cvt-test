@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Profile from '../Components/Profile';
-import EditableName from '../Components/name/EditableName';
 import InlineUserData from '../Components/InlineUserData';
 import EditableInterests from '../Components/interests/EditableInterests';
 import AvatarSection from '../Components/AvatarSection';
@@ -49,7 +48,7 @@ describe('static Profile', () => {
 
   test('header', () => {
     expect(wrapper.find('div.main.profile > div.user-data > header')).toHaveLength(1);
-    expect(wrapper.find('header').find(EditableName)).toHaveLength(1);
+    expect(wrapper.find('header > h2')).toHaveLength(1);
   });
 
   test('user-data section', () => {

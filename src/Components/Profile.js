@@ -63,7 +63,9 @@ class Profile extends Component {
         <AvatarSection />
         <div className="user-data">
           <header>
-            <Editable {...generatePropsForEditable('name')} />
+            <h2>
+              <Editable {...generatePropsForEditable('name')} />
+            </h2>
             <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
           <div className="lined-user-data-section">
