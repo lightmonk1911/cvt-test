@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "cvt test task",
   "private": true,
+  "sideEffect": false,
   "scripts": {
     "test": "jest --watch",
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "start": "webpack-dev-server --open"
   },
   "repository": {
