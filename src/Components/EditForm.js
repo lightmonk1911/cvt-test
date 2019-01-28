@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as buttons from './buttons';
 
 class EditForm extends Component {
   static defaultProps = {
@@ -8,7 +9,7 @@ class EditForm extends Component {
     formatValue: value => value,
     onChange: null,
     onKeyDown: null,
-    isInterests: false,
+    buttonPanel: ['SaveBtn', 'CancelBtn'],
   }
 
   static propTypes = {
@@ -21,7 +22,7 @@ class EditForm extends Component {
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     onKeyDown: PropTypes.func,
-    isInterests: PropTypes.bool,
+    buttonPanel: PropTypes.arrayOf(PropTypes.string),
   }
 
   constructor(props) {
@@ -79,54 +80,26 @@ class EditForm extends Component {
   render() {
     const { value } = this.state;
     const {
-      id, type, placeholder, formatValue, isInterests,
+      id, type, placeholder, formatValue, buttonPanel,
     } = this.props;
     const {
       save, cancel, onBlur, onChange, onKeyDown,
     } = this;
-    const formattedTel = formatValue(value);
+    const formatted = formatValue(value);
     return (
       <form id={id} onSubmit={this.onSubmit}>
         <input
           placeholder={placeholder}
           ref={this.input}
           type={type}
-          value={formattedTel}
+          value={formatted}
           onChange={onChange}
           onBlur={onBlur}
           onKeyDown={onKeyDown}
         />
-        {!isInterests
-          ? [
-            <button
-              key="save-btn"
-              type="button"
-              className="save-btn"
-              onBlur={onBlur}
-              onClick={() => save(value)}
-            >
-              &#10004;
-            </button>,
-            <button
-              key="cancel-btn"
-              type="button"
-              className="cancel-btn"
-              onBlur={onBlur}
-              onClick={cancel}
-            >
-              &#10006;
-            </button>,
-          ]
-          : (
-            <button
-              type="submit"
-              className="save-btn"
-              onBlur={this.onBlur}
-              onClick={() => save(value)}
-            >
-              {value ? 'Добавить интерес' : 'Отменить'}
-            </button>
-          )}
+        {buttonPanel.map(btn => React.createElement(buttons[btn], {
+          save, cancel, onBlur, value, key: btn,
+        }))}
       </form>
     );
   }
