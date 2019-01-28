@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
-import EditableName from './name/EditableName';
-import EditableTel from './tel/EditableTel';
-import EditableEmail from './email/EditableEmail';
+import Editable from './Editable';
 import EditableInterests from './interests/EditableInterests';
 import InlineUserData from './InlineUserData';
 import AvatarSection from './AvatarSection';
@@ -54,6 +52,7 @@ class Profile extends Component {
       const { onChange, onEdit } = this;
       return {
         isEditing: editingField === fieldName,
+        fieldName,
         value,
         onChange,
         onEdit,
@@ -64,13 +63,13 @@ class Profile extends Component {
         <AvatarSection />
         <div className="user-data">
           <header>
-            <EditableName {...generatePropsForEditable('name')} />
+            <Editable {...generatePropsForEditable('name')} />
             <span id="city"><small>г. Нижние Шахты</small></span>
           </header>
           <div className="lined-user-data-section">
             <InlineUserData name="Семейное положение" value={<span className="user-data-line-value">холост</span>} />
-            <InlineUserData name="Телефон" value={<EditableTel {...generatePropsForEditable('tel')} />} />
-            <InlineUserData name="E-mail" value={<EditableEmail {...generatePropsForEditable('email')} />} />
+            <InlineUserData name="Телефон" value={<Editable {...generatePropsForEditable('tel')} />} />
+            <InlineUserData name="E-mail" value={<Editable {...generatePropsForEditable('email')} />} />
           </div>
           <div className="interests-section">
             <b>Интересы</b>

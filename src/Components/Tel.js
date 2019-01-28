@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatFromString, validate } from './Format';
+import { formatFromString, validate } from './tel/Format';
 
 const Tel = ({ onEdit, value }) => (
   <button

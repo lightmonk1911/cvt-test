@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class EditEmailForm extends Component {
+class EditForm extends Component {
   static defaultProps = {
     value: '',
+    type: 'text',
+    formatValue: value => value,
+    onChange: null,
+    onKeyDown: null,
   }
 
   static propTypes = {
     value: PropTypes.string,
     onSave: PropTypes.func.isRequired,
+    fieldName: PropTypes.string.isRequired,
+    formatValue: PropTypes.func,
+    type: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
   }
 
   constructor(props) {
     super(props);
-    this.textInput = React.createRef();
+    this.input = React.createRef();
     this.initValue = props.value;
     this.state = {
       value: props.value,
     };
+    const { onChange, onKeyDown } = this.props;
+    if (onChange) this.onChange = onChange.bind(this);
+    if (onKeyDown) this.onKeyDown = onKeyDown.bind(this);
   }
 
   componentDidMount() {
-    this.textInput.current.focus();
-    this.textInput.current.select();
+    this.input.current.focus();
+    this.input.current.select();
   }
 
   onChange = ({ target: { value } }) => {
@@ -30,16 +44,22 @@ class EditEmailForm extends Component {
   }
 
   save = (value) => {
-    const { onSave } = this.props;
+    const { onSave, fieldName } = this.props;
     if (value !== '' && value !== this.initValue) {
-      onSave('email', value);
+      onSave(fieldName, value);
       return;
     }
-    onSave('email', this.initValue);
+    onSave(fieldName, this.initValue);
   }
 
   cancel = () => {
     this.save(this.initValue);
+  }
+
+  onKeyDown = ({ keyCode }) => {
+    const { value } = this.state;
+    if (keyCode === 13) this.save(value);
+    if (keyCode === 27) this.cancel();
   }
 
   onSubmit = (e) => {
@@ -54,21 +74,20 @@ class EditEmailForm extends Component {
     this.save(value);
   }
 
-  onKeyDown = ({ keyCode }) => {
-    const { value } = this.state;
-    if (keyCode === 13) this.save(value);
-    if (keyCode === 27) this.cancel();
-  }
-
   render() {
     const { value } = this.state;
+    const {
+      id, type, placeholder, formatValue,
+    } = this.props;
     const { save, cancel } = this;
+    const formattedTel = formatValue(value);
     return (
-      <form id="edit-email-form" onSubmit={this.onSubmit}>
+      <form id={id} onSubmit={this.onSubmit}>
         <input
-          ref={this.textInput}
-          type="email"
-          value={value}
+          placeholder={placeholder}
+          ref={this.input}
+          type={type}
+          value={formattedTel}
           onChange={this.onChange}
           onBlur={this.onBlur}
           onKeyDown={this.onKeyDown}
@@ -94,4 +113,4 @@ class EditEmailForm extends Component {
   }
 }
 
-export default EditEmailForm;
+export default EditForm;
