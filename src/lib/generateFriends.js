@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import generatePersonName from './generatePersonName';
 import generateRandomCity from './generateRandomCity';
 import getRandomArrayElement from './getRandomArrayElement';
@@ -11,9 +9,8 @@ const generateFriends = (count) => {
   const friends = [];
   let paths = pathsToAvatars.slice();
   for (let i = 0; i < finalCount; i += 1) {
-    const [num, indexOfUsedPath] = getRandomArrayElement(paths, 'withIndex');
+    const [pathToAvatar, indexOfUsedPath] = getRandomArrayElement(paths, 'withIndex');
     paths = paths.filter((element, index) => index !== indexOfUsedPath);
-    const pathToAvatar = require(`../images/avatars/${num}.jpg`);
     const person = {
       name: generatePersonName(),
       online: Math.random() > 0.5,
