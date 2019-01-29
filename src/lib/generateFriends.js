@@ -4,6 +4,7 @@ import generatePersonName from './generatePersonName';
 import generateRandomCity from './generateRandomCity';
 import getRandomArrayElement from './getRandomArrayElement';
 import pathsToAvatars from './pathsToAvatars';
+import prefetch from './prefetch';
 
 const generateFriends = (count) => {
   const finalCount = count > 36 ? 36 : count;
@@ -20,10 +21,7 @@ const generateFriends = (count) => {
       pathToAvatar,
     };
     friends.push(person);
-    const prefetch = document.createElement('link');
-    prefetch.setAttribute('rel', 'prefetch');
-    prefetch.setAttribute('href', pathToAvatar);
-    document.getElementsByTagName('head')[0].append(prefetch);
+    prefetch(pathToAvatar);
   }
   return friends;
 };
