@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -5,13 +6,8 @@ const babelConfig = require('./babel.config');
 
 
 module.exports = {
-  mode: 'development',
   entry: {
     main: './src/index.js',
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
